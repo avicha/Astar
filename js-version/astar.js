@@ -1,7 +1,3 @@
-function random(min, max) {
-	return Math.floor(min + (max - min) * Math.random());
-}
-
 function generateMap() {
 	var map = [];
 	for (var i = 0, n = 10; i < n; i++) {
@@ -47,6 +43,11 @@ function evaluateW(point, endPoint) {
 	return Math.abs(endPoint.x - point.x) + Math.abs(endPoint.y - point.y);
 }
 var map = generateMap();
+for (var i = 0; i < 10; i++) {
+	console.log(map[i].map(function(obj) {
+		return obj.block;
+	}) + '\n');
+}
 var opened = [],
 	// closed = [],
 	startX = 1,
@@ -67,16 +68,18 @@ while (opened.length) {
 	// closed.push(point);
 	if (point.x === endPoint.x && point.y === endPoint.y) {
 		resolved = true;
-		console.log('find resolution');
+		shortestDis = point.d;
 		while (point) {
 			point.block = 2;
 			point = point.parent;
 		}
+		console.log('\n\n');
 		for (var i = 0; i < 10; i++) {
 			console.log(map[i].map(function(obj) {
 				return obj.block;
 			}) + '\n');
 		}
+		console.log('shortestDis: ' + shortestDis);
 		break;
 	}
 	var points = getOpenedPoints(map, point).filter(function(p) {
