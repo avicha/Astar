@@ -3,8 +3,37 @@
 <head>
     <meta charset="utf-8" />
     <title>A*算法封装版</title>
+    <style type="text/css">
+    #map{
+        overflow: hidden;
+        border-top: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        margin: 100px auto;
+    }
+    #map .tile{
+        float: left;
+        box-sizing: border-box;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+        cursor: default;
+        -webkit-user-select: none;
+    }
+    .tile.state0 {
+        background-color: #fff;
+    }
+    .tile.state1 {
+        background-color: #0ff;
+    }
+    .tile.state2 {
+        background-color: #f00;
+    }
+    </style>
 </head>
 <body>
-    <script type="text/javascript" src="astar.js"></script>
+    <div id="map"></div>
 </body>
+<script type="text/javascript" src="jquery-2.2.2.min.js"></script>
+<script type="text/javascript" src="astar.js"></script>
+<script type="text/javascript" src="main.js"></script>
 </html>
