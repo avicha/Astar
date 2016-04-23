@@ -194,17 +194,15 @@ TileMap.prototype.resolve = function() {
             //如果不是终点，则扩展当前节点，得出可以走的，不是上一级的节点，还未扩展过的节点。
             var points = this.getOpenedPoints(point);
             //如果可以扩展，则计算子节点的预估距离f
-            if (points.length) {
-                points.forEach(function(p) {
-                    //放进队列，并记录子节点的父节点
-                    var d = point.getD() + 1;
-                    var w = this.evaluateW(p, endPoint);
-                    p.setD(d);
-                    p.setW(w);
-                    p.setParent(point);
-                    this._opened.push(p);
-                }.bind(this));
-            }
+            points.forEach(function(p) {
+                //放进队列，并记录子节点的父节点
+                var d = point.getD() + 1;
+                var w = this.evaluateW(p, endPoint);
+                p.setD(d);
+                p.setW(w);
+                p.setParent(point);
+                this._opened.push(p);
+            }.bind(this));
             //按照f排序，向接近目标的节点前进
             this._opened.sort(function(a, b) {
                 return a.getF() - b.getF();

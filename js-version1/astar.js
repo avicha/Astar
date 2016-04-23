@@ -99,7 +99,7 @@ while (opened.length) {
 	//如果不是终点，则扩展当前节点，得出可以走的，不是上一级的节点，还未扩展过的节点。
 	//说明：为什么弃掉扩展过的节点呢？因为是广度优先的，所以后边生成的节点深度肯定大于等于之前生成的节点，第二次生成的d一定>=第一次生成的d，同时w是不变的，所以第二次生成的f也一定>=第一次生成的f，所以没必要再次放进队列。所以弃掉。
 	var points = getOpenedPoints(map, point).filter(function(p) {
-		return p != point.parent;
+		return p != point.parent && !p.f;
 	});
 	if (points.length) {
 		//如果可以扩展，则计算子节点的预估距离f

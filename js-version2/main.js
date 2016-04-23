@@ -1,7 +1,7 @@
 (function(TileMap) {
     //初始化地图大小
     var tilemap = new TileMap(10, 10),
-        tilesize = 50;
+        tilesize = Math.min(50, window.innerWidth / tilemap.column);
     //设置障碍物
     tilemap.setBlocks([13, 17, 23, 31, 32, 33, 35, 36, 45, 46, 52, 53, 60, 61, 62, 63, 66, 67, 68, 69, 76, 83, 84, 86]);
     //设置地图dom长宽
@@ -60,6 +60,6 @@
             }
         }
     });
-    //默认一开始双击了第9行第8列的终点
-    $('#map').find('.tile').eq(87).dblclick();
+    //默认一开始双击了第9行第9列的终点
+    $('#map').find('.tile').eq(88).dblclick();
 })(TileMap);
