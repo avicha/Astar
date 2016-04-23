@@ -3,7 +3,7 @@
     var tilemap = new TileMap(10, 10),
         tilesize = Math.min(50, window.innerWidth / tilemap.column);
     //设置障碍物
-    tilemap.setBlocks([13, 17, 23, 31, 32, 33, 35, 36, 45, 46, 52, 53, 60, 61, 62, 63, 66, 67, 68, 69, 76, 83, 84, 86]);
+    tilemap.setBlocks([13, 17, 23, 31, 32, 33, 35, 36, 45, 46, 52, 53, 60, 61, 62, 63, 66, 67, 68, 69, 73, 76, 83, 84, 86, 93]);
     //设置地图dom长宽
     var map = $('#map').width(tilemap.row * tilesize).height(tilemap.column * tilesize);
     console.log(tilemap.toString());
@@ -25,7 +25,7 @@
     var currentRow = 1,
         currentColumn = 1;
     //设置双击事件，当双击某个格点时，相当于要到达这个终点
-    $('#map').on('dblclick', '.tile', function(e) {
+    $('#map').on('dblclick touchend', '.tile', function(e) {
         var self = $(this);
         //如果不是点击障碍物
         if (!self.is('.state1')) {
